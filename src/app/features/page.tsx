@@ -4,7 +4,8 @@ import FeatureDetailSection from "@/components/FeatureDetail";
 
 export const metadata: Metadata = {
   title: "Features | Hive - AI Agent Orchestrator",
-  description: "Explore Hive's powerful features: autonomous agent teams, intelligent delegation, workflow automation, and more.",
+  description:
+    "Explore Hive's powerful features: autonomous agent teams, intelligent delegation, workflow automation, and more.",
 };
 
 const featuresData = [
@@ -18,13 +19,14 @@ const featuresData = [
       "Senior Developers (Claude Sonnet) - Complex implementations (6+ points), code review, mentorship",
       "Intermediate Developers (Claude Haiku) - Medium tasks (4-5 points), balanced capability",
       "Junior Developers (GPT-4o-mini) - Simple tasks (1-3 points), pattern learning",
-      "QA Engineers (Claude Sonnet) - Testing, linting, type checking, PR approval"
+      "QA Engineers (Claude Sonnet) - Testing, linting, type checking, PR approval",
     ],
     codeExample: `# Agents coordinate automatically
 Tech Lead: Creates STORY-001, STORY-002, STORY-003
 Senior: Claims STORY-001 (8 pts complexity)
 Junior: Claims STORY-003 (2 pts complexity)
 QA: Reviews and approves completed work`,
+    docsLink: "/docs/core-concepts/agent-hierarchy",
   },
   {
     id: "intelligent-delegation",
@@ -35,12 +37,13 @@ QA: Reviews and approves completed work`,
       "Automatic complexity scoring based on story analysis",
       "Right-sized assignments prevent over/under-utilization",
       "Workload balancing across available agents",
-      "Dynamic re-assignment when agents are blocked"
+      "Dynamic re-assignment when agents are blocked",
     ],
     codeExample: `Story Complexity Scoring:
 - Story: "Add OAuth2 Google login" → 5 pts → Intermediate
 - Story: "Update button color" → 2 pts → Junior
 - Story: "Refactor auth architecture" → 8 pts → Senior`,
+    docsLink: "/docs/core-concepts/task-delegation",
   },
   {
     id: "workflow-automation",
@@ -53,7 +56,7 @@ QA: Reviews and approves completed work`,
       "Phase 3: Agents implement in parallel → Code committed",
       "Phase 4: Seniors review → Feedback loop until approved",
       "Phase 5: QA runs tests, lint, types → Pass/Fail",
-      "Phase 6: PR created automatically → Ready for merge"
+      "Phase 6: PR created automatically → Ready for merge",
     ],
     codeExample: `$ hive req "Add user authentication"
 ✓ REQ-001 created → Tech Lead analyzing...
@@ -61,6 +64,7 @@ QA: Reviews and approves completed work`,
 ✓ Development in progress...
 ✓ Code review passed → QA testing
 ✓ All checks passed → PR #42 created`,
+    docsLink: "/docs/core-concepts/the-workflow",
   },
   {
     id: "realtime-dashboard",
@@ -72,7 +76,7 @@ QA: Reviews and approves completed work`,
       "Story pipeline visualization (Kanban-style)",
       "Activity log with timestamped events",
       "Escalation alerts requiring human input",
-      "Resource utilization metrics"
+      "Resource utilization metrics",
     ],
     codeExample: `$ hive dashboard
 
@@ -82,6 +86,8 @@ QA: Reviews and approves completed work`,
 │ QA-1      → Testing   🧪  │  │ Review:      2 stories │
 └───────────────────────────┘  │ Complete:    12 stories│
                                 └────────────────────────┘`,
+    docsLink: "/docs/cli-reference/dashboard",
+    screenshotPlaceholder: true,
   },
   {
     id: "escalation-protocol",
@@ -93,7 +99,7 @@ QA: Reviews and approves completed work`,
       "Escalations include context and specific questions",
       "Work pauses until human responds",
       "Dashboard and CLI notifications",
-      "Escalation history tracked for learning"
+      "Escalation history tracked for learning",
     ],
     codeExample: `🚨 Escalation from Senior-1 on STORY-005:
 
@@ -104,6 +110,7 @@ need Redis/Memcached for multi-instance setups."
 
 $ hive escalations respond ESC-001 "Use JWT"
 ✓ Senior-1 resuming work with your guidance`,
+    docsLink: "/docs/guides/human-in-the-loop",
   },
   {
     id: "multi-repo",
@@ -115,7 +122,7 @@ $ hive escalations respond ESC-001 "Use JWT"
       "Cross-repo dependency tracking",
       "Coordinated multi-service releases",
       "Tech Lead orchestrates integration work",
-      "Agents work within their assigned repos"
+      "Agents work within their assigned repos",
     ],
     codeExample: `# Requirement affects 3 services
 REQ-001: "Add payment processing"
@@ -124,6 +131,7 @@ REQ-001: "Add payment processing"
   → worker-service: STORY-003 (async processing)
 
 Tech Lead coordinates cross-repo integration`,
+    docsLink: "/docs/guides/multi-repo-setup",
   },
   {
     id: "state-persistence",
@@ -135,7 +143,7 @@ Tech Lead coordinates cross-repo integration`,
       "Continuous checkpointing of agent work",
       "Crash recovery with zero data loss",
       "Resume command restarts all agents",
-      "Full audit trail of all changes"
+      "Full audit trail of all changes",
     ],
     codeExample: `$ hive dashboard
 # System crashes! 💥
@@ -146,6 +154,7 @@ $ hive resume
 ✓ Senior-1 resuming STORY-005 at line 42
 ✓ Junior-2 resuming STORY-003
 ✓ QA-1 re-running test suite`,
+    docsLink: "/docs/core-concepts/state-persistence",
   },
   {
     id: "git-integration",
@@ -157,7 +166,7 @@ $ hive resume
       "Clear commit messages with story references",
       "PR creation with detailed descriptions",
       "CI/CD integration (GitHub Actions, etc.)",
-      "Supports GitHub Enterprise and self-hosted Git"
+      "Supports GitHub Enterprise and self-hosted Git",
     ],
     codeExample: `# Agent workflow
 1. Agent creates: feature/story-005-add-auth
@@ -166,6 +175,7 @@ $ hive resume
 4. Agent opens PR: "Story 005: Add JWT Authentication"
 
 PR includes: Story link, changes summary, test plan`,
+    docsLink: "/docs/guides/ci-cd-integration",
   },
   {
     id: "configuration",
@@ -177,7 +187,7 @@ PR includes: Story link, changes summary, test plan`,
       "Customizable AI model selection per agent type",
       "Adjustable complexity scoring thresholds",
       "Agent persona customization",
-      "Repository and Git settings"
+      "Repository and Git settings",
     ],
     codeExample: `# hive.config.yaml
 agents:
@@ -195,6 +205,7 @@ repository:
   submodules:
     - ./repos/backend-api
     - ./repos/frontend-web`,
+    docsLink: "/docs/configuration-reference/yaml-schema",
   },
   {
     id: "manager-daemon",
@@ -206,7 +217,7 @@ repository:
       "Automatic restart of stalled agents",
       "Idle timeout detection and recovery",
       "Failure pattern analysis",
-      "Graceful shutdown with checkpointing"
+      "Graceful shutdown with checkpointing",
     ],
     codeExample: `$ hive manager start
 ✓ Manager daemon started (PID 1234)
@@ -220,6 +231,8 @@ $ hive manager status
 ✓ All agents healthy
 ✓ 3 restarts in last 24h
 ✓ 0 escalations pending`,
+    docsLink: "/docs/cli-reference/manager",
+    screenshotPlaceholder: true,
   },
 ];
 
