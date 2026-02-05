@@ -22,6 +22,33 @@ export const metadata: Metadata = {
   title: "Hive | Your AI Development Team, Ready to Ship",
   description:
     "Deploy a team of AI agents that autonomously plan, develop, and ship features. From requirement to production in minutes, not months.",
+  keywords: [
+    "AI agents",
+    "autonomous development",
+    "software development",
+    "AI team",
+    "code generation",
+    "developer tools",
+  ],
+  authors: [{ name: "Hive" }],
+  openGraph: {
+    type: "website",
+    url: "https://hive.dev",
+    title: "Hive | Your AI Development Team, Ready to Ship",
+    description:
+      "Deploy a team of AI agents that autonomously plan, develop, and ship features.",
+    siteName: "Hive",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hive | Your AI Development Team, Ready to Ship",
+    description:
+      "Deploy a team of AI agents that autonomously plan, develop, and ship features.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function Home() {
