@@ -1,21 +1,20 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import Breadcrumb from "@/components/Common/Breadcrumb";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Page | Free Next.js Template for Startup and SaaS",
-  description: "This is About Page for Startup Nextjs Template",
-  // other metadata
+  title: "About Hive | AI Development Team Orchestrator",
+  description:
+    "Learn about Hive: our mission to build the future of software development with AI agents that handle routine work so humans can focus on the creative.",
 };
 
 const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="About Hive"
+        description="We're building the future of software development - where AI agents handle the routine so humans can focus on the creative."
       />
       <AboutSectionOne />
       <AboutSectionTwo />

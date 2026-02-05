@@ -1,4 +1,5 @@
-import Image from "next/image";
+"use client";
+
 import SectionTitle from "../Common/SectionTitle";
 
 const checkIcon = (
@@ -24,8 +25,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                title="Our Mission: The Future of Software Development"
+                paragraph="We're building a world where AI agents handle the routine development work, freeing humans to focus on architecture, design decisions, and creative problem-solving. Hive represents a fundamental shift in how software gets built."
                 mb="44px"
               />
 
@@ -35,34 +36,42 @@ const AboutSectionOne = () => {
               >
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
+                    <List text="Autonomous AI Teams" />
+                    <List text="24/7 Development" />
+                    <List text="Coordinated Workflows" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Next.js" />
-                    <List text="Rich documentation" />
-                    <List text="Developer friendly" />
+                    <List text="Human-in-the-Loop" />
+                    <List text="Production Ready" />
+                    <List text="Open Source First" />
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="w-full px-4 lg:w-1/2">
-              <div className="relative mx-auto aspect-25/24 max-w-[500px] lg:mr-0">
-                <Image
-                  src="/images/about/about-image.svg"
-                  alt="about-image"
-                  fill
-                  className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0"
-                />
-                <Image
-                  src="/images/about/about-image-dark.svg"
-                  alt="about-image"
-                  fill
-                  className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0"
-                />
+              <div className="relative mx-auto aspect-video max-w-[500px]">
+                <div className="flex h-full w-full items-center justify-center rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 dark:from-primary/20 dark:to-primary/10">
+                  <div className="text-center">
+                    <svg
+                      className="mx-auto h-16 w-16 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                    <p className="mt-4 text-body-color dark:text-body-color-dark">
+                      Autonomous AI Development
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
