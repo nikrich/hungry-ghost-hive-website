@@ -1,6 +1,6 @@
 "use client";
 
-import NewsLatterBox from "./NewsLatterBox";
+import NewsLetterBox from "./NewsLetterBox";
 
 const Contact = () => {
   return (
@@ -76,7 +76,7 @@ const Contact = () => {
             </div>
           </div>
           <div className="w-full px-4 lg:w-5/12 xl:w-4/12">
-            <NewsLatterBox />
+            <NewsLetterBox />
           </div>
         </div>
       </div>
