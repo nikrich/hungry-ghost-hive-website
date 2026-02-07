@@ -61,14 +61,14 @@ const Header = () => {
                   alt="logo"
                   width={140}
                   height={30}
-                  className="w-full dark:hidden"
+                  className="dark:hidden"
                 />
                 <Image
-                  src="/images/logo/logo.png"
+                  src="/images/logo/logo.svg"
                   alt="logo"
-                  width={30}
+                  width={140}
                   height={30}
-                  className="hidden w-full dark:block"
+                  className="hidden dark:block"
                 />
               </Link>
             </div>
@@ -160,7 +160,7 @@ const Header = () => {
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/nikrich/hungry-ghost-hive"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
