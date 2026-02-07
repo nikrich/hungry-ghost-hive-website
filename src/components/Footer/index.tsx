@@ -19,10 +19,10 @@ const Footer = () => {
                     height={30}
                   />
                   <Image
-                    src="/images/logo/logo.svg"
+                    src="/images/logo/logo.png"
                     alt="logo"
                     className="hidden w-full dark:block"
-                    width={140}
+                    width={30}
                     height={30}
                   />
                 </Link>
