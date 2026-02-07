@@ -7,6 +7,9 @@ on:
 jobs:
   check-pr-title:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+      statuses: write
     steps:
       - name: Check PR title follows conventional commits
         uses: amannn/action-semantic-pull-request@v5
