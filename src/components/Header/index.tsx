@@ -160,7 +160,7 @@ const Header = () => {
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/nikrich/hungry-ghost-hive"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"

@@ -221,7 +221,7 @@ export default function HowItWorksTimeline() {
         </p>
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <a
-            href="https://github.com/hungry-ghost/hive"
+            href="https://github.com/nikrich/hungry-ghost-hive"
             className="rounded-lg bg-primary px-8 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
           >
             Get Started - Open Source
