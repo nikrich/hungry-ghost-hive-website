@@ -1,9 +1,69 @@
 "use client";
 
+import { useState } from "react";
 import { useTheme } from "next-themes";
 
 const NewsLatterBox = () => {
   const { theme } = useTheme();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setStatusMessage(null);
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatusMessage({
+          type: "success",
+          text: data.message,
+        });
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+        });
+      } else {
+        setStatusMessage({
+          type: "error",
+          text: data.error || "Failed to subscribe",
+        });
+      }
+    } catch (error) {
+      setStatusMessage({
+        type: "error",
+        text: "An error occurred. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="shadow-three dark:bg-gray-dark relative z-10 rounded-xs bg-white p-8 sm:p-11 lg:p-8 xl:p-11">
@@ -11,31 +71,51 @@ const NewsLatterBox = () => {
         Subscribe to receive future updates
       </h3>
       <p className="border-body-color/25 text-body-color mb-11 border-b pb-11 text-base leading-relaxed dark:border-white/25">
-        Lorem ipsum dolor sited Sed ullam corper consectur adipiscing Mae ornare
-        massa quis lectus.
+        Get the latest updates on Hive features, releases, and AI-powered development tips delivered to your inbox.
       </p>
-      <div>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
+          id="newsletter-name"
           name="name"
+          value={formData.name}
+          onChange={handleChange}
           placeholder="Enter your name"
+          required
           className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary mb-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
         />
         <input
           type="email"
+          id="newsletter-email"
           name="email"
+          value={formData.email}
+          onChange={handleChange}
           placeholder="Enter your email"
+          required
           className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary mb-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
         />
-        <input
+        {statusMessage && (
+          <div
+            className={`mb-4 rounded-xs px-4 py-3 text-sm ${
+              statusMessage.type === "success"
+                ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-200"
+                : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200"
+            }`}
+          >
+            {statusMessage.text}
+          </div>
+        )}
+        <button
           type="submit"
-          value="Subscribe"
-          className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark mb-5 flex w-full cursor-pointer items-center justify-center rounded-xs px-9 py-4 text-base font-medium text-white duration-300"
-        />
+          disabled={isLoading}
+          className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark mb-5 flex w-full cursor-pointer items-center justify-center rounded-xs px-9 py-4 text-base font-medium text-white duration-300 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {isLoading ? "Subscribing..." : "Subscribe"}
+        </button>
         <p className="text-body-color dark:text-body-color-dark text-center text-base leading-relaxed">
-          No spam guaranteed, So please don’t send any spam mail.
+          No spam guaranteed. Unsubscribe anytime.
         </p>
-      </div>
+      </form>
 
       <div>
         <span className="absolute top-7 left-2">
