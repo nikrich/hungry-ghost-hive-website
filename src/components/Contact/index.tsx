@@ -1,8 +1,90 @@
 "use client";
 
+import { useState } from "react";
 import NewsLatterBox from "./NewsLatterBox";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Clear error when user starts typing
+    if (error) setError("");
+  };
+
+  const validateForm = (): boolean => {
+    if (!formData.name.trim()) {
+      setError("Please enter your name");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      setError("Please enter your email");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setError("Please enter a valid email address");
+      return false;
+    }
+    if (!formData.message.trim()) {
+      setError("Please enter your message");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "An error occurred. Please try again.");
+        return;
+      }
+
+      setSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+      // Auto-clear success message after 5 seconds
+      setTimeout(() => setSuccess(false), 5000);
+    } catch (err) {
+      setError("An error occurred. Please try again.");
+      console.error("Contact form error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -18,7 +100,21 @@ const Contact = () => {
               <p className="mb-12 text-base font-medium text-body-color">
                 Questions about Hive? Have a feature request? We'd love to hear from you. Fill out the form below and we'll get back to you soon.
               </p>
-              <form>
+              {success && (
+                <div className="mb-6 rounded-xs bg-green-100 px-6 py-4 text-green-700 dark:bg-green-900/20 dark:text-green-400">
+                  <p className="font-medium">Success!</p>
+                  <p className="text-sm">
+                    Thank you for your message. We will get back to you soon.
+                  </p>
+                </div>
+              )}
+              {error && (
+                <div className="mb-6 rounded-xs bg-red-100 px-6 py-4 text-red-700 dark:bg-red-900/20 dark:text-red-400">
+                  <p className="font-medium">Error</p>
+                  <p className="text-sm">{error}</p>
+                </div>
+              )}
+              <form onSubmit={handleSubmit}>
                 <div className="-mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -30,8 +126,13 @@ const Contact = () => {
                       </label>
                       <input
                         type="text"
+                        id="name"
+                        name="name"
                         placeholder="Enter your name"
-                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none disabled:opacity-50"
                       />
                     </div>
                   </div>
@@ -45,8 +146,13 @@ const Contact = () => {
                       </label>
                       <input
                         type="email"
+                        id="email"
+                        name="email"
                         placeholder="Enter your email"
-                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                        className="border-stroke w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none disabled:opacity-50"
                       />
                     </div>
                   </div>
@@ -59,16 +165,24 @@ const Contact = () => {
                         Your Message
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         rows={5}
                         placeholder="Enter your message or question"
-                        className="border-stroke w-full resize-none rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        disabled={loading}
+                        className="border-stroke w-full resize-none rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-hidden focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none disabled:opacity-50"
                       ></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className="rounded-xs bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
-                      Send Message
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="rounded-xs bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed dark:shadow-submit-dark"
+                    >
+                      {loading ? "Sending..." : "Send Message"}
                     </button>
                   </div>
                 </div>
