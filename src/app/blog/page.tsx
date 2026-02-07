@@ -35,36 +35,36 @@ const Blog = () => {
             <div className="w-full px-4">
               <ul className="flex items-center justify-center pt-8">
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     Prev
-                  </a>
+                  </button>
                 </li>
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     1
-                  </a>
+                  </button>
                 </li>
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     2
-                  </a>
+                  </button>
                 </li>
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     3
-                  </a>
+                  </button>
                 </li>
                 <li className="mx-1">
                   <span className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm">
@@ -72,20 +72,20 @@ const Blog = () => {
                   </span>
                 </li>
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     12
-                  </a>
+                  </button>
                 </li>
                 <li className="mx-1">
-                  <a
-                    href="#0"
-                    className="bg-body-color/15 text-body-color hover:bg-primary flex h-9 min-w-[36px] items-center justify-center rounded-md px-4 text-sm transition hover:text-white"
+                  <button
+                    disabled
+                    className="bg-body-color/15 text-body-color flex h-9 min-w-[36px] cursor-not-allowed items-center justify-center rounded-md px-4 text-sm opacity-50"
                   >
                     Next
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>

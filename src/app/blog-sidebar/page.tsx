@@ -1,7 +1,7 @@
 import RelatedPost from "@/components/Blog/RelatedPost";
 import SharePost from "@/components/Blog/SharePost";
 import TagButton from "@/components/Blog/TagButton";
-import NewsLatterBox from "@/components/Contact/NewsLatterBox";
+import NewsLetterBox from "@/components/Contact/NewsLetterBox";
 import Image from "next/image";
 
 import { Metadata } from "next";
@@ -96,12 +96,9 @@ const BlogSidebarPage = () => {
                     </div>
                   </div>
                   <div className="mb-5">
-                    <a
-                      href="#0"
-                      className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white"
-                    >
+                    <span className="bg-primary inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-white">
                       Design
-                    </a>
+                    </span>
                   </div>
                 </div>
                 <div>
@@ -405,44 +402,29 @@ const BlogSidebarPage = () => {
                 </h3>
                 <ul className="px-8 py-6">
                   <li>
-                    <a
-                      href="#0"
-                      className="text-body-color hover:text-primary mb-3 inline-block text-base font-medium"
-                    >
+                    <span className="text-body-color mb-3 inline-block text-base font-medium">
                       Tailwind Templates
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#0"
-                      className="text-body-color hover:text-primary mb-3 inline-block text-base font-medium"
-                    >
+                    <span className="text-body-color mb-3 inline-block text-base font-medium">
                       Landing page
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#0"
-                      className="text-body-color hover:text-primary mb-3 inline-block text-base font-medium"
-                    >
+                    <span className="text-body-color mb-3 inline-block text-base font-medium">
                       Startup
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#0"
-                      className="text-body-color hover:text-primary mb-3 inline-block text-base font-medium"
-                    >
+                    <span className="text-body-color mb-3 inline-block text-base font-medium">
                       Business
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#0"
-                      className="text-body-color hover:text-primary mb-3 inline-block text-base font-medium"
-                    >
+                    <span className="text-body-color mb-3 inline-block text-base font-medium">
                       Multipurpose
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -459,7 +441,7 @@ const BlogSidebarPage = () => {
                 </div>
               </div>
 
-              <NewsLatterBox />
+              <NewsLetterBox />
             </div>
           </div>
         </div>
